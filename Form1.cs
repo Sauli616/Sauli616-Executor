@@ -249,7 +249,7 @@ namespace Sauli616_Executor
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load Infinite Yield:\n{ex.Message}", "Network Error", 
+                MessageBox.Show($"Failed to load Infinite Yield:\n{ex.Message}", "Network Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
