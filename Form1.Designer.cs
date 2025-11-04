@@ -134,7 +134,7 @@ namespace Sauli616_Executor
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(23, 23);
             this.button6.TabIndex = 8;
-            this.button6.Text = "Open Folder";
+            this.button6.Text = "📂";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
 
@@ -150,7 +150,7 @@ namespace Sauli616_Executor
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(23, 23);
             this.button7.TabIndex = 9;
-            this.button7.Text = "Save";
+            this.button7.Text = "🗃️";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
 
