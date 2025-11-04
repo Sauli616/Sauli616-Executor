@@ -199,7 +199,7 @@ namespace Sauli616_Executor
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
-            Opacity = 0.94D;
+            Opacity = 0.98D;
             Text = "Sauli616";
             Load += Form1_Load;
             ResumeLayout(false);
