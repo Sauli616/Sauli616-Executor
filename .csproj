@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	  <PropertyGroup>
+		    <OutputType>WinExe</OutputType>
+		    <TargetFramework>net8.0-windows</TargetFramework>
+		    <RootNamespace>Sauli616_Executor</RootNamespace>
+		    <Nullable>enable</Nullable>
+		    <UseWindowsForms>true</UseWindowsForms>
+		    <ImplicitUsings>enable</ImplicitUsings>
+		    <Platforms>AnyCPU;x64</Platforms>
+		  
+	</PropertyGroup>
+	  <ItemGroup>
+		    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		  
+	</ItemGroup>
+	  <ItemGroup>
+		    <Reference Include="CloudyApis">
+			      <HintPath>bin\x64\Debug\net8.0-windows\CloudyApis.dll</HintPath>
+			    
+		</Reference>
+		    <Reference Include="CzkAPI">
+			      <HintPath>bin\x64\Debug\net8.0-windows\CzkAPI.dll</HintPath>
+			    
+		</Reference>
+		    <Reference Include="QuorumAPI">
+			      <HintPath>bin\x64\Debug\net8.0-windows\QuorumAPI.dll</HintPath>
+			    
+		</Reference>
+		    <Reference Include="Velocity">
+			      <HintPath>bin\x64\Debug\net8.0-windows\Velocity.dll</HintPath>
+			    
+		</Reference>
+		    <Reference Include="VelocityAPI">
+			      <HintPath>bin\x64\Debug\net8.0-windows\VelocityAPI.dll</HintPath>
+			    
+		</Reference>
+		    <Reference Include="XenoUI">
+			      <HintPath>bin\Debug\net8.0-windows\XenoUI.dll</HintPath>
+			    
+		</Reference>
+		  
+	</ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.WindowsDesktop.App.WPF" />
+	</ItemGroup>
+	<ItemGroup>
+		  <Compile Update="Properties\Resources.Designer.cs">
+			    <DesignTime>True</DesignTime>
+			    <AutoGen>True</AutoGen>
+			    <DependentUpon>Resources.resx</DependentUpon>
+			  
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		  <EmbeddedResource Update="Properties\Resources.resx">
+			    <Generator>ResXFileCodeGenerator</Generator>
+			    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+			  
+		</EmbeddedResource>
+	</ItemGroup>
+</Project>
