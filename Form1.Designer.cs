@@ -1,282 +1,241 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Windows.Forms;
-using Newtonsoft.Json;
-using XenoUI;
-
 namespace Sauli616_Executor
 {
-    public partial class Form1 : Form
+    partial class Form1
     {
-        private Point mouseLocation;
-        private const string ScriptsFolder = @"D:\Sauli616 Executor\Scripts";
+        private System.ComponentModel.IContainer components = null;
 
-        // Fullscreen toggle -muuttujat
-        private bool isFullscreen = false;
-        private FormWindowState previousWindowState;
-        private FormBorderStyle previousBorderStyle;
-        private Rectangle previousBounds;
-
-        public Form1()
+        protected override void Dispose(bool disposing)
         {
-            InitializeComponent();
-            ClientsWindow.Initialize(false);
-
-            // Salli näppäimistökuuntelu
-            this.KeyPreview = true;
-
-            // Ikkunan siirto
-            this.MouseDown += Form1_MouseDown;
-            this.MouseMove += Form1_MouseMove;
-            this.MouseUp += Form1_MouseUp;
-
-            // F11 = Fullscreen toggle
-            this.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.F11)
-                {
-                    ToggleFullscreen();
-                    e.Handled = true;
-                }
-            };
-
-            EnsureScriptsFolderExists();
-            RemoveButtonFocusOutline();
+            if (disposing && (components != null))
+                components.Dispose();
+            base.Dispose(disposing);
         }
 
-        #region Ikkunan siirto
-        private void Form1_MouseDown(object? sender, MouseEventArgs e)
+        #region Windows Form Designer generated code
+
+        private void InitializeComponent()
         {
-            if (e.Button == MouseButtons.Left && !isFullscreen)
-                mouseLocation = e.Location;
+            button1 = new Button();
+            button2 = new Button();
+            richTextBox1 = new RichTextBox();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            label1 = new Label();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            button7 = new Button();
+            button8 = new Button();
+            button9 = new Button();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(34, 34, 34);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(60, 60, 60);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.WhiteSmoke;
+            button1.Location = new Point(422, 218);
+            button1.Name = "button1";
+            button1.Size = new Size(68, 23);
+            button1.TabIndex = 0;
+            button1.Text = "▶Execute";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(34, 34, 34);
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(60, 60, 60);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = Color.WhiteSmoke;
+            button2.Location = new Point(348, 219);
+            button2.Name = "button2";
+            button2.Size = new Size(68, 23);
+            button2.TabIndex = 1;
+            button2.Text = "🔗Attach";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.BackColor = Color.FromArgb(34, 34, 34);
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.ForeColor = Color.PaleGreen;
+            richTextBox1.Location = new Point(12, 31);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(478, 181);
+            richTextBox1.TabIndex = 2;
+            richTextBox1.Text = "";
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
+            label1.ForeColor = Color.WhiteSmoke;
+            label1.Location = new Point(36, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(52, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Sauli616";
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(28, 28, 28);
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 80, 80);
+            button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 70, 70);
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = Color.Red;
+            button3.Location = new Point(468, 4);
+            button3.Name = "button3";
+            button3.Size = new Size(22, 21);
+            button3.TabIndex = 4;
+            button3.Text = "⬤";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.FromArgb(28, 28, 28);
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 80, 80);
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 70, 70);
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.ForeColor = Color.MediumSeaGreen;
+            button4.Location = new Point(412, 4);
+            button4.Name = "button4";
+            button4.Size = new Size(22, 21);
+            button4.TabIndex = 5;
+            button4.Text = "⬤";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // button5
+            // 
+            button5.BackgroundImage = Properties.Resources.Nemhoo;
+            button5.BackgroundImageLayout = ImageLayout.Stretch;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Location = new Point(2, 3);
+            button5.Name = "button5";
+            button5.Size = new Size(28, 22);
+            button5.TabIndex = 6;
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.FromArgb(24, 24, 24);
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatAppearance.MouseDownBackColor = Color.FromArgb(60, 60, 60);
+            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Segoe UI Emoji", 10F);
+            button6.ForeColor = Color.WhiteSmoke;
+            button6.Location = new Point(12, 217);
+            button6.Name = "button6";
+            button6.Size = new Size(23, 23);
+            button6.TabIndex = 8;
+            button6.Text = "📂";
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
+            // button7
+            // 
+            button7.BackColor = Color.FromArgb(24, 24, 24);
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatAppearance.MouseDownBackColor = Color.FromArgb(60, 60, 60);
+            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Segoe UI Emoji", 10F);
+            button7.ForeColor = Color.WhiteSmoke;
+            button7.Location = new Point(41, 218);
+            button7.Name = "button7";
+            button7.Size = new Size(23, 23);
+            button7.TabIndex = 9;
+            button7.Text = "📁";
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.FromArgb(24, 24, 24);
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatAppearance.MouseDownBackColor = Color.FromArgb(60, 60, 60);
+            button8.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            button8.ForeColor = Color.WhiteSmoke;
+            button8.Location = new Point(70, 219);
+            button8.Name = "button8";
+            button8.Size = new Size(27, 23);
+            button8.TabIndex = 10;
+            button8.Text = "IY";
+            button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
+            // 
+            // button9
+            // 
+            button9.BackColor = Color.FromArgb(28, 28, 28);
+            button9.FlatAppearance.BorderSize = 0;
+            button9.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 80, 80);
+            button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 70, 70);
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.ForeColor = Color.Gold;
+            button9.Location = new Point(440, 4);
+            button9.Name = "button9";
+            button9.Size = new Size(22, 21);
+            button9.TabIndex = 11;
+            button9.Text = "⬤";
+            button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = Color.FromArgb(24, 24, 24);
+            ClientSize = new Size(502, 250);
+            Controls.Add(button9);
+            Controls.Add(button8);
+            Controls.Add(button6);
+            Controls.Add(button7);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(label1);
+            Controls.Add(richTextBox1);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "Form1";
+            Opacity = 0.98D;
+            Text = "Sauli616";
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
-        private void Form1_MouseMove(object? sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left && !isFullscreen)
-            {
-                Point screenPos = Control.MousePosition;
-                this.Location = new Point(screenPos.X - mouseLocation.X, screenPos.Y - mouseLocation.Y);
-            }
-        }
-
-        private void Form1_MouseUp(object? sender, EventArgs e) { }
         #endregion
 
-        #region Fullscreen Toggle
-        private void ToggleFullscreen()
-        {
-            if (!isFullscreen)
-            {
-                // Tallenna nykyinen tila
-                previousWindowState = this.WindowState;
-                previousBorderStyle = this.FormBorderStyle;
-                previousBounds = this.Bounds;
-
-                // Siirry fullscreen
-                this.WindowState = FormWindowState.Normal;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.Bounds = Screen.FromHandle(this.Handle).Bounds;
-                this.TopMost = true;
-            }
-            else
-            {
-                // Palaa normaaliin
-                this.TopMost = false;
-                this.FormBorderStyle = previousBorderStyle;
-                this.Bounds = previousBounds;
-                this.WindowState = previousWindowState;
-            }
-
-            isFullscreen = !isFullscreen;
-        }
-        #endregion
-
-        #region Xeno.dll
-        [DllImport("Xeno.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-        private static extern IntPtr GetClients();
-
-        [DllImport("Xeno.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-        private static extern void Execute(byte[] script, int[] PIDs, int count);
-
-        [DllImport("Xeno.dll", CallingConvention = CallingConvention.StdCall)]
-        public static extern void Attach();
-        #endregion
-
-        #region Apufunktiot
-        private void EnsureScriptsFolderExists()
-        {
-            if (!Directory.Exists(ScriptsFolder))
-                Directory.CreateDirectory(ScriptsFolder);
-        }
-
-        private void RemoveButtonFocusOutline()
-        {
-            Action<Button> removeOutline = btn =>
-            {
-                btn.GotFocus += (s, e) => this.ActiveControl = null;
-            };
-            foreach (var btn in new[] { button1, button2, button3, button4, button6, button7, button8, button9 })
-                removeOutline(btn);
-        }
-
-        private List<int> GetReadyClientPIDs()
-        {
-            var pids = new List<int>();
-            try
-            {
-                IntPtr ptr = GetClients();
-                if (ptr == IntPtr.Zero) return pids;
-
-                string json = Marshal.PtrToStringAnsi(ptr) ?? "";
-                var list = JsonConvert.DeserializeObject<List<List<object>>>(json);
-
-                if (list == null) return pids;
-
-                foreach (var client in list)
-                {
-                    if (client.Count >= 4)
-                    {
-                        int pid = Convert.ToInt32(client[0]);
-                        int state = Convert.ToInt32(client[3]);
-                        if (state == 3) pids.Add(pid);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Client scan failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            return pids;
-        }
-
-        private void ExecuteScriptOnClients(string script)
-        {
-            if (string.IsNullOrWhiteSpace(script)) return;
-
-            var pids = GetReadyClientPIDs();
-            if (pids.Count == 0)
-            {
-                MessageBox.Show("No ready clients. Attach first!", "No Clients", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            try
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(script + "\0");
-                Execute(bytes, pids.ToArray(), pids.Count);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Execution failed:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        #endregion
-
-        #region Tapahtumat
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.Text = "Sauli616 Executor";
-        }
-
-        private void button2_Click(object sender, EventArgs e) // Inject
-        {
-            try { Attach(); }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Attach failed:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e) // Execute
-        {
-            ExecuteScriptOnClients(richTextBox1.Text);
-        }
-
-        private void button6_Click(object sender, EventArgs e) // Open File
-        {
-            var ofd = new OpenFileDialog
-            {
-                Title = "Open Script",
-                Filter = "Lua Files (*.lua)|*.lua|Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
-                InitialDirectory = Directory.Exists(ScriptsFolder) ? ScriptsFolder : Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
-            };
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                richTextBox1.Text = File.ReadAllText(ofd.FileName);
-                this.Text = $"Sauli616 Executor - {Path.GetFileName(ofd.FileName)}";
-            }
-        }
-
-        private void button7_Click(object sender, EventArgs e) // Save File
-        {
-            var sfd = new SaveFileDialog
-            {
-                Title = "Save Script",
-                Filter = "Lua Files (*.lua)|*.lua|Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
-                DefaultExt = "lua",
-                FileName = "script.lua",
-                InitialDirectory = ScriptsFolder
-            };
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(sfd.FileName, richTextBox1.Text);
-                this.Text = $"Sauli616 Executor - {Path.GetFileName(sfd.FileName)}";
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e) // Minimize
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void button3_Click(object sender, EventArgs e) // Close
-        {
-            this.Close();
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e) { }
-
-        private void button8_Click(object sender, EventArgs e) // Infinite Yield
-        {
-            const string iyUrl = "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source";
-            try
-            {
-                using var client = new WebClient();
-                string script = client.DownloadString(iyUrl);
-                ExecuteScriptOnClients(script);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to load Infinite Yield:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void button9_Click(object sender, EventArgs e) // Fullscreen Toggle
-        {
-            ToggleFullscreen();
-        }
-        #endregion
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            foreach (var process in Process.GetProcessesByName("RobloxPlayerBeta"))
-            {
-                try
-                {
-                    process.Kill();
-                    process.WaitForExit(1000);
-                }
-                catch { }
-            }
-        }
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
