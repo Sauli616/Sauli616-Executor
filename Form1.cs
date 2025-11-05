@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using System.Net;
 using Newtonsoft.Json;
 using XenoUI;
 
@@ -264,5 +265,18 @@ namespace Sauli616_Executor
             ToggleFullscreen();
         }
         #endregion
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            foreach (var process in Process.GetProcessesByName("RobloxPlayerBeta"))
+            {
+                try
+                {
+                    process.Kill();
+                    process.WaitForExit(1000);
+                }
+                catch { }
+            }
+        }
     }
 }
